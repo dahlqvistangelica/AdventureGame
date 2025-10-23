@@ -1,7 +1,9 @@
 ﻿namespace AdventureGame
 {
     using System;
+    using System.Reflection;
     using System.Text;
+    using System.Xml;
 
     class Program
     {
@@ -29,10 +31,7 @@
                 Console.WriteLine("\t\t\t---- GAME OVER ----\n\t\t\tTiden är ute, du överlevde!");
             }
 
-        }
-
-
-        static (string Name, int Health, int Gold) CreateCharacter()
+        static (string Name, string Klass, int Health, int Gold) CreateCharacter()
         {
             Console.WriteLine("Vad är ditt namn?");
             string namn = Console.ReadLine();
@@ -55,9 +54,19 @@
                     klass = "Anka";
                     break;
             }
+            Console.WriteLine(CharacterStory(namn, klass));
             int hp = 100;
             int gold = 0;
-            return (namn, hp, gold);
+            return (namn, klass, hp, gold);
+        }
+        static string CharacterStory(string name, string klass)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Du vaknar på en strand...");
+            sb.AppendLine($"Du har ett vagt minne avv att ditt namn är {name}...");
+            sb.AppendLine($"Du känner igen föremålet till din sida. en perfekt kompanjon för en {klass} som dig!");
+            string story = sb.ToString();
+            return story;
         }
 
         static void StartAdventure(string name, ref int health, ref int gold)
