@@ -78,7 +78,7 @@
                         Console.ReadLine();
                         break;
                     case "Möta monster":
-                        health -= 5; gold -= 3;
+                        health -= 50; gold -= 3;
                         Console.WriteLine("Du möter ett monster och förlorar 5 hälsa och tappar 3 guld.");
                         Console.ReadLine();
                         break;
@@ -98,8 +98,8 @@
                         Console.ReadLine();
                         break;
                     case "Rånad":
-                        gold = 0;
-                        Console.WriteLine("Du blir rånad på allt ditt guld!");
+                        gold = 0; health -= 20;
+                        Console.WriteLine("Du blir nerslagen och rånad på allt ditt guld!");
                         Console.ReadLine();
                         break;
                     default:
