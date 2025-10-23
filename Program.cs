@@ -17,6 +17,7 @@
             TimeSpan playTime = DateTime.Now - startTime;
             while (character.Health > 0 && playTime < maxPlayTime)
             {
+                playTime = DateTime.Now - startTime;
                 DisplayStats(character.Name, character.Health, character.Gold, playTime);
                 StartAdventure(character.Name, ref character.Health, ref character.Gold);
             }
@@ -34,7 +35,7 @@
             static (string Name, string Klass, int Health, int Gold) CreateCharacter()
             {
                 Console.WriteLine("Vad är ditt namn?");
-                string namn = Console.ReadLine();
+                string? namn = Console.ReadLine();
                 Console.WriteLine("välj din klass!");
                 Console.WriteLine($"[1] - Magiker \n [2] - Krigare \n [3] - Tjuv");
                 string klass = "";
@@ -77,7 +78,7 @@
                 {
                     case "Hitta skatt":
                         gold += 10;
-                        Console.WriteLine("Du hittar en skatt med 10guld.");
+                        Console.WriteLine("Du hittar en skatt med 10 guld.");
                         Console.ReadLine();
                         break;
                     case "Möta monster":
