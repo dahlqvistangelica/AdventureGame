@@ -83,40 +83,40 @@
 
             static void StartAdventure(string name, ref int health, ref int gold)
             {
-
+                int maxhealth = health;
                 string occurrence = GenerateRandomEvent();
                 switch (occurrence)
                 {
                     case "Hitta skatt":
                         gold += 25;
-                        Console.WriteLine("Du hittar en skatt med 10 guld.");
+                        Console.WriteLine("Du hittar en skatt med 25 guld.");
                         Console.ReadLine();
                         break;
                     case "Möta monster":
                         health -= 50; gold -= 3;
                         if (gold <= 0)
                             gold = 0;
-                        Console.WriteLine("Du möter ett monster och förlorar 5 hälsa och tappar 3 guld.");
+                        Console.WriteLine("Du möter ett monster och förlorar 50 hälsa och tappar 3 guld.");
                         Console.ReadLine();
                         break;
                     case "Vila vid lägereld":
                         health += 5;
-                        if (health >= 100)
-                            health = 100;
+                        if (health >= maxhealth)
+                            health = maxhealth;
                         Console.WriteLine("Du vilar vid lägerelden och återfår 5 hälsa.");
                         Console.ReadLine();
                         break;
                     case "Hitta läkande vatten":
                         health += 5;
-                        if (health >= 100)
-                            health = 100;
+                        if (health >= maxhealth)
+                            health = maxhealth;
                         Console.WriteLine("Du hittar en bäck med läkande vatten och återfår 5 hälsa.");
                         Console.ReadLine();
                         break;
                     case "Döda stort monster":
                         gold += 5;
-                        if (health >= 100)
-                            health = 100;
+                        if (health >= maxhealth)
+                            health = maxhealth;
                         Console.WriteLine("Du möter och dödar ett stort monster utan skador och hittar 5 guld i monstrets mage.");
                         Console.ReadLine();
                         break;
