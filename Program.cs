@@ -48,16 +48,28 @@
                 switch(occurrence)
                 {
                     case "Hitta skatt": gold += 10;
+                        Console.WriteLine("Du hittar en skatt med 10guld.");
+                        Console.ReadLine();
                         break;
                     case "Möta mönster": health -= 5; gold -= 3;
+                        Console.WriteLine("Du möter ett monster och förlorar 5 hälsa och tappar 3 guld.");
+                        Console.ReadLine();
                         break;
                     case "Vila vid lägereld": health += 5;
+                        Console.WriteLine("Du vilar vid lägerelden och återfår 5 hälsa.");
+                        Console.ReadLine();
                         break;
                     case "Hitta läkande vatten": health += 5;
+                        Console.WriteLine("Du hittar en bäck med läkande vatten och återfår 5 hälsa.");
+                        Console.ReadLine();
                         break;
                     case "Döda stort monster": gold += 5;
+                        Console.WriteLine("Du möter och dödar ett stort monster utan skador och hittar 5 guld i monstrets mage.");
+                        Console.ReadLine();
                         break;
                     case "Rånad": gold = 0;
+                        Console.WriteLine("Du blir rånad på allt ditt guld!");
+                        Console.ReadLine();
                         break;
                     default: Console.WriteLine("Invalid occurence");
                         break;
