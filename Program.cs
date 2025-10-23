@@ -14,7 +14,7 @@
 
             DateTime startTime = DateTime.Now;
             TimeSpan playTime = DateTime.Now - startTime;
-            StartAdventure(character.Name, ref character.Health, ref character.Gold);
+            StartAdventure(character.Name, ref character.Health, ref character.Gold, playTime);
             if (character.Health <= 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -57,10 +57,11 @@
             return (namn, hp, gold);
         }
 
-        static void StartAdventure(string name, ref int health, ref int gold)
+        static void StartAdventure(string name, ref int health, ref int gold, TimeSpan timePlayed)
         {
             do
             {
+                DisplayStats(name, health, gold, timePlayed);
                 string occurrence = GenerateRandomEvent();
                 switch(occurrence)
                 {
@@ -68,7 +69,7 @@
                         Console.WriteLine("Du hittar en skatt med 10guld.");
                         Console.ReadLine();
                         break;
-                    case "Möta mönster": health -= 5; gold -= 3;
+                    case "Möta monster": health -= 5; gold -= 3;
                         Console.WriteLine("Du möter ett monster och förlorar 5 hälsa och tappar 3 guld.");
                         Console.ReadLine();
                         break;
