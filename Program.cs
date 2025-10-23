@@ -16,7 +16,7 @@
             while (character.Health > 0 && playTime < maxPlayTime)
             {
                 DisplayStats(character.Name, character.Health, character.Gold, playTime);
-                StartAdventure(character.Name, ref character.Health, ref character.Gold, playTime);
+                StartAdventure(character.Name, ref character.Health, ref character.Gold);
             }
             if (character.Health <= 0)
             {
@@ -25,8 +25,8 @@
             }
             else if (playTime >= maxPlayTime)
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("\t\t\t---- GAME OVER ----\n\t\t\tTiden är ute.");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\t\t\t---- GAME OVER ----\n\t\t\tTiden är ute, du överlevde!");
             }
 
         }
@@ -125,7 +125,7 @@
         {
             // Visa spelarens statistik här 
             Console.WriteLine($"Namn: {name} \nHP: {health} \nGuld: {gold}");
-            Console.WriteLine($"Tid spelat: {timePlayed.ToString("mmm' : 'ss")}");
+            Console.WriteLine($"Tid spelat: {timePlayed.ToString("mm' : 'ss")}");
         }
     }
 
