@@ -48,22 +48,22 @@ namespace AdventureGame
                 switch (input)
                 {
                     case 1:
-                        klass = Klass.Magiker.ToString();
+                        klass = Klass.Magiker.ToString().ToLower();
                         gold = 100;
                         hp = 75;
                         break;
                     case 2:
-                        klass = Klass.Krigare.ToString();
+                        klass = Klass.Krigare.ToString().ToLower(); ;
                         hp = 200;
                         gold = 10;
                         break;
                     case 3:
-                        klass = Klass.Tjuv.ToString();
+                        klass = Klass.Tjuv.ToString().ToLower();
                         gold = 1500000;
                         hp = 100;
                         break;
                     default:
-                        klass = Klass.Anka.ToString();
+                        klass = Klass.Anka.ToString().ToLower();
                         hp = 6000;
                         gold = 0;
                         break;
