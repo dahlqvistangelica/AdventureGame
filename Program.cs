@@ -67,9 +67,11 @@
             return "INGET HÄNDE ERROR";
         }
 
-        static void DisplayStats(string name, int health, int gold)
+        static void DisplayStats(string name, int health, int gold, TimeSpan timePlayed)
         {
             // Visa spelarens statistik här 
+            Console.WriteLine($"Namn: {name} \nHP: {health} \nGuld: {gold}");
+            Console.WriteLine($"Tid spelat: {timePlayed}");
         }
     }
 
