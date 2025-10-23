@@ -1,8 +1,4 @@
-﻿
-
-
-
-namespace AdventureGame
+﻿namespace AdventureGame
 {
     using System;
     using System.Reflection;
@@ -13,12 +9,13 @@ namespace AdventureGame
     {
         static void Main(string[] args)
         {
-            TimeSpan maxPlayTime = TimeSpan.Parse("00:15:00");
+            TimeSpan maxPlayTime = TimeSpan.Parse("00:03:00");
             Console.WriteLine("Välkommen till Äventyraren!");
             var character = CreateCharacter();
 
             DateTime startTime = DateTime.Now;
             TimeSpan playTime = DateTime.Now - startTime;
+
             while (character.Health > 0 && playTime < maxPlayTime)
             {
                 playTime = DateTime.Now - startTime;
@@ -47,16 +44,16 @@ namespace AdventureGame
                 switch (input)
                 {
                     case 1:
-                        klass = "Magiker";
+                        klass = "magiker";
                         break;
                     case 2:
-                        klass = "Krigare";
+                        klass = "krigare";
                         break;
                     case 3:
-                        klass = "Tjuv";
+                        klass = "tjuv";
                         break;
                     default:
-                        klass = "Anka";
+                        klass = "anka";
                         break;
                 }
                 Console.WriteLine(CharacterStory(namn, klass));
@@ -69,7 +66,7 @@ namespace AdventureGame
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine("Du vaknar på en strand...");
                 sb.AppendLine($"Du har ett vagt minne avv att ditt namn är {name}...");
-                sb.AppendLine($"Du känner igen föremålet till din sida. en perfekt kompanjon för en {klass} som dig!");
+                sb.AppendLine($"Du känner igen föremålet till din sida. En perfekt kompanjon för en {klass} som dig!");
                 string story = sb.ToString();
                 return story;
             }
@@ -82,7 +79,7 @@ namespace AdventureGame
                 {
                     case "Hitta skatt":
                         gold += 25;
-                        Console.WriteLine("Du hittar en skatt med 10guld.");
+                        Console.WriteLine("Du hittar en skatt med 10 guld.");
                         Console.ReadLine();
                         break;
                     case "Möta monster":
