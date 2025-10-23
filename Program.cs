@@ -8,13 +8,36 @@
         static void Main(string[] args)
         {
             Console.WriteLine("Välkommen till Äventyraren!");
+            CreateCharacter();
             // Huvudlogiken för spelet kommer här 
         }
 
         static (string Name, int Health, int Gold) CreateCharacter()
         {
-            // Implementera karaktärsskapande här 
-            return ("", 0, 0);
+            Console.WriteLine("Vad är ditt namn?");
+            string namn = Console.ReadLine();
+            Console.WriteLine("välj din klass!");
+            Console.WriteLine($"[1] - Magiker \n [2] - Krigare \n [3] - Tjuv");
+            string klass = "";
+            Int32.TryParse(Console.ReadLine(), out int input);
+            switch (input)
+            {
+                case 1:
+                    klass = "Magiker";
+                    break;
+                case 2:
+                    klass = "Krigare";
+                    break;
+                case 3:
+                    klass = "Tjuv";
+                    break;
+                default:
+                    klass = "Anka";
+                    break;
+            }
+            int hp = 100;
+            int gold = 0;
+            return (namn, hp, gold);
         }
 
         static void StartAdventure(string name, ref int health, ref int gold)
