@@ -122,7 +122,7 @@
         {
             // Visa spelarens statistik här 
             Console.WriteLine($"Namn: {name} \nHP: {health} \nGuld: {gold}");
-            Console.WriteLine($"Tid spelat: {timePlayed.ToString("mmm' : 'ss")}");
+            Console.WriteLine($"Tid spelat: {timePlayed.ToString("mm' : 'ss")}");
         }
     }
 
