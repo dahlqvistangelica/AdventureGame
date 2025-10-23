@@ -39,7 +39,7 @@ namespace AdventureGame
             {
                 Console.WriteLine("Vad är ditt namn?");
                 string? namn = Console.ReadLine();
-                int hp = 100;
+                int hp = 0;
                 int gold = 0;
                 Console.WriteLine("välj din klass!");
                 Console.WriteLine($"[1] - Magiker \n[2] - Krigare \n[3] - Tjuv");
@@ -50,18 +50,22 @@ namespace AdventureGame
                     case 1:
                         klass = Klass.Magiker.ToString();
                         gold = 100;
+                        hp = 75;
                         break;
                     case 2:
                         klass = Klass.Krigare.ToString();
                         hp = 200;
+                        gold = 10;
                         break;
                     case 3:
                         klass = Klass.Tjuv.ToString();
                         gold = 1500000;
+                        hp = 100;
                         break;
                     default:
                         klass = Klass.Anka.ToString();
                         hp = 6000;
+                        gold = 0;
                         break;
                 }
                 Console.WriteLine(CharacterStory(namn, klass));
