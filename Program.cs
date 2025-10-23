@@ -19,7 +19,28 @@
 
         static void StartAdventure(string name, ref int health, ref int gold)
         {
-            // Implementera äventyrslogiken här 
+            do
+            {
+                string occurrence = GenerateRandomEvent();
+                switch(occurrence)
+                {
+                    case "Hitta skatt": gold += 10;
+                        break;
+                    case "Möta mönster": health -= 5; gold -= 3;
+                        break;
+                    case "Vila vid lägereld": health += 5;
+                        break;
+                    case "Hitta läkande vatten": health += 5;
+                        break;
+                    case "Döda stort monster": gold += 5;
+                        break;
+                    case "Rånad": gold = 0;
+                        break;
+                    default: Console.WriteLine("Invalid occurence");
+                        break;
+
+                }
+            } while (health > 0);
         }
 
         static string GenerateRandomEvent()
