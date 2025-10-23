@@ -1,6 +1,7 @@
 ﻿namespace AdventureGame
 {
     using System;
+    using System.Diagnostics;
     using System.Reflection;
     using System.Text;
     using System.Xml;
@@ -14,6 +15,7 @@
             var character = CreateCharacter();
 
             DateTime startTime = DateTime.Now;
+            Stopwatch.StartNew();
             TimeSpan playTime = DateTime.Now - startTime;
 
             while (character.Health > 0 && playTime < maxPlayTime)
