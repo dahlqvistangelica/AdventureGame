@@ -68,8 +68,26 @@
 
         static string GenerateRandomEvent()
         {
+            var rnd = new Random();
             // Implementera slumpmässiga händelser här 
-            return "";
+            int randomEvent = rnd.Next(1, 7);
+
+            switch (randomEvent)
+            {
+                case 1:
+                    return "Hitta skatt";
+                case 2:
+                    return "Möta monster";
+                case 3:
+                    return "Vila vid lägereld";
+                case 4:
+                    return "Hitta läkande vatten";
+                case 5:
+                    return "Döda stort monster";
+                case 6:
+                    return "Rånad";
+            }
+            return "INGET HÄNDE ERROR";
         }
 
         static void DisplayStats(string name, int health, int gold)
