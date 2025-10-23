@@ -59,10 +59,11 @@
             return (namn, hp, gold);
         }
 
-        static void StartAdventure(string name, ref int health, ref int gold)
+        static void StartAdventure(string name, ref int health, ref int gold, TimeSpan timePlayed)
         {
             do
             {
+                DisplayStats(name, health, gold, timePlayed);
                 string occurrence = GenerateRandomEvent();
                 switch(occurrence)
                 {
@@ -70,7 +71,7 @@
                         Console.WriteLine("Du hittar en skatt med 10guld.");
                         Console.ReadLine();
                         break;
-                    case "Möta mönster": health -= 5; gold -= 3;
+                    case "Möta monster": health -= 5; gold -= 3;
                         Console.WriteLine("Du möter ett monster och förlorar 5 hälsa och tappar 3 guld.");
                         Console.ReadLine();
                         break;
@@ -125,7 +126,7 @@
         {
             // Visa spelarens statistik här 
             Console.WriteLine($"Namn: {name} \nHP: {health} \nGuld: {gold}");
-            Console.WriteLine($"Tid spelat: {timePlayed}");
+            Console.WriteLine($"Tid spelat: {timePlayed.ToString("mm : ss")}");
         }
     }
 
