@@ -15,7 +15,8 @@
             TimeSpan playTime = DateTime.Now - startTime;
             while (character.Health > 0 && playTime < maxPlayTime)
             {
-                StartAdventure(character.Name, ref character.Health, ref character.Gold);
+                DisplayStats(character.Name, character.Health, character.Gold, playTime);
+                StartAdventure(character.Name, ref character.Health, ref character.Gold, playTime);
             }
             if (character.Health <= 0)
             {
