@@ -10,11 +10,13 @@
             TimeSpan maxPlayTime = TimeSpan.Parse("00:15:00");
             Console.WriteLine("Välkommen till Äventyraren!");
             var character = CreateCharacter();
-            Console.WriteLine($"Hej {character.Name}. Din hälsa är nu {character.Health} och du har {character.Gold} guld.");
 
             DateTime startTime = DateTime.Now;
             TimeSpan playTime = DateTime.Now - startTime;
-            StartAdventure(character.Name, ref character.Health, ref character.Gold);
+            while (character.Health > 0 && playTime < maxPlayTime)
+            {
+                StartAdventure(character.Name, ref character.Health, ref character.Gold);
+            }
             if (character.Health <= 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
