@@ -14,7 +14,7 @@
 
             DateTime startTime = DateTime.Now;
             TimeSpan playTime = DateTime.Now - startTime;
-            StartAdventure(character.Name, ref character.Health, ref character.Gold, playTime);
+            StartAdventure(character.Name, ref character.Health, ref character.Gold);
             if (character.Health <= 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -57,11 +57,9 @@
             return (namn, hp, gold);
         }
 
-        static void StartAdventure(string name, ref int health, ref int gold, TimeSpan timePlayed)
+        static void StartAdventure(string name, ref int health, ref int gold)
         {
-            do
-            {
-                DisplayStats(name, health, gold, timePlayed);
+           
                 string occurrence = GenerateRandomEvent();
                 switch(occurrence)
                 {
@@ -93,7 +91,7 @@
                         break;
 
                 }
-            } while (health > 0);
+            
         }
 
         static string GenerateRandomEvent()
@@ -124,7 +122,7 @@
         {
             // Visa spelarens statistik här 
             Console.WriteLine($"Namn: {name} \nHP: {health} \nGuld: {gold}");
-            Console.WriteLine($"Tid spelat: {timePlayed}");
+            Console.WriteLine($"Tid spelat: {timePlayed.ToString("mmm' : 'ss")}");
         }
     }
 
