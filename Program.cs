@@ -75,7 +75,7 @@ namespace AdventureGame
             {
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine("Du vaknar på en strand...");
-                sb.AppendLine($"Du har ett vagt minne avv att ditt namn är {name}...");
+                sb.AppendLine($"Du har ett vagt minne av att ditt namn är {name}...");
                 sb.AppendLine($"Du känner igen föremålet vid din sida. en perfekt kompanjon för en {klass} som dig!");
                 string story = sb.ToString();
                 return story;
