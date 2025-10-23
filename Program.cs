@@ -4,7 +4,7 @@
     using System.Reflection;
     using System.Text;
     using System.Xml;
-
+    enum Klass { Magiker, Krigare, Tjuv, Anka}
     class Program
     {
         static void Main(string[] args)
@@ -31,7 +31,7 @@
             static (string Name, string Klass, int Health, int Gold) CreateCharacter()
             {
                 Console.WriteLine("Vad är ditt namn?");
-                string namn = Console.ReadLine();
+                string? namn = Console.ReadLine();
                 Console.WriteLine("välj din klass!");
                 Console.WriteLine($"[1] - Magiker \n [2] - Krigare \n [3] - Tjuv");
                 string klass = "";
@@ -39,16 +39,16 @@
                 switch (input)
                 {
                     case 1:
-                        klass = "Magiker";
+                        klass = Klass.Magiker.ToString();
                         break;
                     case 2:
-                        klass = "Krigare";
+                        klass = Klass.Krigare.ToString(); 
                         break;
                     case 3:
-                        klass = "Tjuv";
+                        klass = Klass.Tjuv.ToString();
                         break;
                     default:
-                        klass = "Anka";
+                        klass = Klass.Anka.ToString();
                         break;
                 }
                 Console.WriteLine(CharacterStory(namn, klass));
