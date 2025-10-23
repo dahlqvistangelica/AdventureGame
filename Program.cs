@@ -12,11 +12,14 @@
             TimeSpan maxPlayTime = TimeSpan.Parse("00:15:00");
             Console.WriteLine("Välkommen till Äventyraren!");
             var character = CreateCharacter();
-            Console.WriteLine($"Hej {character.Name}. Din hälsa är nu {character.Health} och du har {character.Gold} guld.");
 
             DateTime startTime = DateTime.Now;
             TimeSpan playTime = DateTime.Now - startTime;
-            StartAdventure(character.Name, ref character.Health, ref character.Gold);
+            while (character.Health > 0 && playTime < maxPlayTime)
+            {
+                DisplayStats(character.Name, character.Health, character.Gold, playTime);
+                StartAdventure(character.Name, ref character.Health, ref character.Gold);
+            }
             if (character.Health <= 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -24,36 +27,40 @@
             }
             else if (playTime >= maxPlayTime)
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("\t\t\t---- GAME OVER ----\n\t\t\tTiden är ute.");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\t\t\t---- GAME OVER ----\n\t\t\tTiden är ute, du överlevde!");
             }
 
             static (string Name, string Klass, int Health, int Gold) CreateCharacter()
             {
                 Console.WriteLine("Vad är ditt namn?");
                 string? namn = Console.ReadLine();
+                int hp = 100;
+                int gold = 0;
                 Console.WriteLine("välj din klass!");
-                Console.WriteLine($"[1] - Magiker \n [2] - Krigare \n [3] - Tjuv");
+                Console.WriteLine($"[1] - Magiker \n[2] - Krigare \n[3] - Tjuv");
                 string klass = "";
                 Int32.TryParse(Console.ReadLine(), out int input);
                 switch (input)
                 {
                     case 1:
                         klass = Klass.Magiker.ToString();
+                        gold = 100;
                         break;
                     case 2:
-                        klass = Klass.Krigare.ToString(); 
+                        klass = Klass.Krigare.ToString();
+                        hp = 200;
                         break;
                     case 3:
                         klass = Klass.Tjuv.ToString();
+                        gold = 1500000;
                         break;
                     default:
                         klass = Klass.Anka.ToString();
+                        hp = 6000;
                         break;
                 }
                 Console.WriteLine(CharacterStory(namn, klass));
-                int hp = 100;
-                int gold = 0;
                 return (namn, klass, hp, gold);
             }
             static string CharacterStory(string name, string klass)
@@ -61,7 +68,7 @@
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine("Du vaknar på en strand...");
                 sb.AppendLine($"Du har ett vagt minne avv att ditt namn är {name}...");
-                sb.AppendLine($"Du känner igen föremålet till din sida. en perfekt kompanjon för en {klass} som dig!");
+                sb.AppendLine($"Du känner igen föremålet vid din sida. en perfekt kompanjon för en {klass} som dig!");
                 string story = sb.ToString();
                 return story;
             }
@@ -78,7 +85,7 @@
                         Console.ReadLine();
                         break;
                     case "Möta monster":
-                        health -= 5; gold -= 3;
+                        health -= 50; gold -= 3;
                         Console.WriteLine("Du möter ett monster och förlorar 5 hälsa och tappar 3 guld.");
                         Console.ReadLine();
                         break;
@@ -98,8 +105,8 @@
                         Console.ReadLine();
                         break;
                     case "Rånad":
-                        gold = 0;
-                        Console.WriteLine("Du blir rånad på allt ditt guld!");
+                        gold = 0; health -= 20;
+                        Console.WriteLine("Du blir nerslagen och rånad på allt ditt guld!");
                         Console.ReadLine();
                         break;
                     default:
@@ -138,7 +145,7 @@
             {
                 // Visa spelarens statistik här 
                 Console.WriteLine($"Namn: {name} \nHP: {health} \nGuld: {gold}");
-                Console.WriteLine($"Tid spelat: {timePlayed.ToString("mmm' : 'ss")}");
+                Console.WriteLine($"Tid spelat: {timePlayed.ToString("mm' : 'ss")}");
             }
         }
 
