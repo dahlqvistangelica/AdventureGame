@@ -4,7 +4,7 @@
     using System.Reflection;
     using System.Text;
     using System.Xml;
-
+    enum Klass { Magiker, Krigare, Tjuv, Anka}
     class Program
     {
         static void Main(string[] args)
@@ -37,36 +37,44 @@
             {
                 Console.WriteLine("Vad är ditt namn?");
                 string? namn = Console.ReadLine();
+                int hp = 0;
+                int gold = 0;
                 Console.WriteLine("välj din klass!");
-                Console.WriteLine($"[1] - Magiker \n [2] - Krigare \n [3] - Tjuv");
+                Console.WriteLine($"[1] - Magiker \n[2] - Krigare \n[3] - Tjuv");
                 string klass = "";
                 Int32.TryParse(Console.ReadLine(), out int input);
                 switch (input)
                 {
                     case 1:
-                        klass = "magiker";
+                        klass = Klass.Magiker.ToString();
+                        gold = 100;
+                        hp = 75;
                         break;
                     case 2:
-                        klass = "krigare";
+                        klass = Klass.Krigare.ToString();
+                        hp = 200;
+                        gold = 10;
                         break;
                     case 3:
-                        klass = "tjuv";
+                        klass = Klass.Tjuv.ToString();
+                        gold = 1500000;
+                        hp = 100;
                         break;
                     default:
-                        klass = "anka";
+                        klass = Klass.Anka.ToString();
+                        hp = 6000;
+                        gold = 0;
                         break;
                 }
                 Console.WriteLine(CharacterStory(namn, klass));
-                int hp = 100;
-                int gold = 0;
                 return (namn, klass, hp, gold);
             }
             static string CharacterStory(string name, string klass)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine("Du vaknar på en strand...");
-                sb.AppendLine($"Du har ett vagt minne avv att ditt namn är {name}...");
-                sb.AppendLine($"Du känner igen föremålet till din sida. En perfekt kompanjon för en {klass} som dig!");
+                sb.AppendLine($"Du har ett vagt minne av att ditt namn är {name}...");
+                sb.AppendLine($"Du känner igen föremålet vid din sida. en perfekt kompanjon för en {klass} som dig!");
                 string story = sb.ToString();
                 return story;
             }
